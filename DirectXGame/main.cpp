@@ -47,6 +47,8 @@ int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR,int)
 	ParticleManager::GetInstance()->Initialize(dxCommon->GetDevice());
 #pragma endregion
 
+
+
 	// ゲームシーンの初期化
 	gameScene = new GameScene();
 	gameScene->Initialize(dxCommon, input, audio);
