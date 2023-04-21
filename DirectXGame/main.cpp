@@ -46,9 +46,9 @@ int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR,int)
 	LightGroup::StaticInitialize(dxCommon->GetDevice());
 	// パーティクルマネージャ初期化
 	ParticleManager::GetInstance()->Initialize(dxCommon->GetDevice());
+#pragma endregion
 	//FBXローダー初期化
 	FbxLoader::GetInstance()->Initialize(dxCommon->GetDevice());
-#pragma endregion
 
 
 
