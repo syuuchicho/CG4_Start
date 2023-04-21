@@ -1,7 +1,8 @@
-﻿#include "GameScene.h"
-#include <cassert>
+﻿#include <cassert>
 #include <sstream>
 #include <iomanip>
+#include "GameScene.h"
+#include "FbxLoader.h"
 
 using namespace DirectX;
 
@@ -43,6 +44,9 @@ void GameScene::Initialize(DirectXCommon* dxCommon, Input* input, Audio * audio)
 		assert(0);
 		return;
 	}
+	//モデル名を指定してファイル読み込み
+	FbxLoader::GetInstance()->LoadModelFromFile("cube");
+
 	// 背景スプライト生成
 	spriteBG = Sprite::Create(1, { 0.0f,0.0f });
 	// パーティクルマネージャ生成
