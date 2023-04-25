@@ -44,7 +44,7 @@ public:
 	/// </summary>
 	/// <param name="model">読み込み先モデルオブジェクト</param>
 	/// <param name="fbxNode">解析対象のノード</param>
-	void ParseNodeRecursive(Model* model, FbxNode* fbxNode);
+	void ParseNodeRecursive(Model* model, FbxNode* fbxNode,Node*parent=nullptr);
 private:
 	// privateなコンストラクタ（シングルトンパターン）
 	FbxLoader() = default;

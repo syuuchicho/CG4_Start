@@ -60,6 +60,10 @@ void FbxLoader::LoadModelFromFile(const string& modelName)
     //モデル生成
     Model* model = new Model();
     model->name = modelName;
+    //FBXノードの数を取得
+    int nodeCount = fbxScene->GetNodeCount();
+    //あらかじめ必要数分のメモリを確保することで,アドレスがずれるのを予防
+    model->nodes.reserve(nodeCount);
     //ルートノードから順に解析してモデルに流し込む
     ParseNodeRecursive(model, fbxScene->GetRootNode());
     //FBXシーン解放
@@ -67,7 +71,7 @@ void FbxLoader::LoadModelFromFile(const string& modelName)
 
 }
 
-void FbxLoader::ParseNodeRecursive(Model* model, FbxNode* fbxNode)
+void FbxLoader::ParseNodeRecursive(Model* model, FbxNode* fbxNode, Node* parent)
 {
     //ノード名を取得
     string name = fbxNode->GetName();
@@ -98,12 +102,26 @@ void FbxLoader::ParseNodeRecursive(Model* model, FbxNode* fbxNode)
     matRotation = XMMatrixRotationRollPitchYawFromVector(node.rotation);
     matTranslation = XMMatrixTranslationFromVector(node.translation);
 
-    //FBXノードの情報を解析してノードに記録(Todo)
+    //ローカル変形行列の計算
+    node.transform = XMMatrixIdentity();
+    node.transform *= matScaling;//ワールド行列にスケーリングを反映
+    node.transform *= matRotation;//ワールド行列に回転を反映
+    node.transform *= matTranslation;//ワールド行列に平行移動を反映
+
+    //グローバル変形行列の計算
+    node.globalTransform = node.transform;
+    if (parent)
+    {
+        node.parent = parent;
+        //親の変形を乗算
+        node.globalTransform *= parent->globalTransform;
+    }
+
     //FBXノードのメッシュ情報を解析(Todo)
 
     //子ノードに対して再帰呼び出し
     for (int i = 0; i < fbxNode->GetChildCount(); i++){
-        ParseNodeRecursive(model, fbxNode->GetChild(i));
+        ParseNodeRecursive(model, fbxNode->GetChild(i),&node);
     }
 }
 
