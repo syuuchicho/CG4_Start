@@ -3,7 +3,7 @@
 #include <iomanip>
 #include "GameScene.h"
 #include "FbxLoader.h"
-
+//01_08P28
 using namespace DirectX;
 
 GameScene::GameScene()
