@@ -49,7 +49,7 @@ int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR,int)
 #pragma endregion
 	//FBXローダー初期化
 	FbxLoader::GetInstance()->Initialize(dxCommon->GetDevice());
-
+	
 
 
 	// ゲームシーンの初期化
