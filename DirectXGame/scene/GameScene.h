@@ -10,7 +10,7 @@
 #include "Audio.h"
 #include "DebugCamera.h"
 #include "LightGroup.h"
-
+#include "Object3d.h"
 #include <vector>
 
 /// <summary>
@@ -62,7 +62,7 @@ private: // メンバ変数
 	DirectXCommon* dxCommon = nullptr;
 	Input* input = nullptr;
 	Audio* audio = nullptr;
-	DebugText* debugText;	
+	DebugText* debugText;
 
 	/// <summary>
 	/// ゲームシーン用
@@ -70,7 +70,9 @@ private: // メンバ変数
 	DebugCamera* camera = nullptr;
 	Sprite* spriteBG = nullptr;
 	ParticleManager* particleMan = nullptr;
-
 	LightGroup* lightGroup = nullptr;
+	Model* model1 = nullptr;
+	Object3d* object1 = nullptr;
+
 };
 
