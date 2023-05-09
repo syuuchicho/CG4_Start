@@ -2,7 +2,7 @@
 
 #include"Model.h"
 #include"Camera.h"
-
+#include"FbxLoader.h"
 #include<Windows.h>
 #include<wrl.h>
 #include<d3d12.h>
@@ -12,6 +12,9 @@
 
 class Object3d
 {
+public://定数
+	//ボーンの最大数
+	static const int MAX_BONES = 32;
 protected:
 	//Microsoft::WRL::を省略
 	template<class T>using ComPtr =
@@ -46,6 +49,11 @@ public://サブクラス
 		XMMATRIX world;			//ワールド行列
 		XMFLOAT3 cameraPos;		//カメラ座標(ワールド座標)
 	};
+	//定数バッファ用データ構造体(スキニング)
+	struct ConstBufferDataSkin
+	{
+		XMMATRIX bones[MAX_BONES];
+	};
 public://メンバー関数
 	/// <summary>
 	/// 初期化
@@ -69,6 +77,8 @@ public://メンバー関数
 protected://メンバ変数
 	//定数バッファ
 	ComPtr<ID3D12Resource> constBuffTransform;
+	//定数バッファ(スキン)
+	ComPtr<ID3D12Resource>constBuffSkin;
 	//ローカルスケール
 	XMFLOAT3 scale = { 1,1,1 };
 	//XYZ軸回りのローカル回転角
@@ -79,6 +89,5 @@ protected://メンバ変数
 	XMMATRIX matWorld;
 	//モデル
 	Model* model = nullptr;
-
 };
 

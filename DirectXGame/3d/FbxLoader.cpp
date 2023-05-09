@@ -1,7 +1,7 @@
 ﻿#include "FbxLoader.h"
 #include <cassert>
 using namespace DirectX;
-//01_07 P24
+
 FbxLoader* FbxLoader::GetInstance()
 {
 	static FbxLoader instance;
@@ -365,6 +365,7 @@ void FbxLoader::ParseSkin(Model* model, FbxMesh* fbxMesh)
 	FbxSkin* fbxSkin =
 		static_cast<FbxSkin*>(fbxMesh->GetDeformer(0,
 			FbxDeformer::eSkin));
+
 	if (fbxSkin==nullptr){
 		return;
 	}

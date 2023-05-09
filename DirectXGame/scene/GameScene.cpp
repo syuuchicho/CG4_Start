@@ -4,7 +4,8 @@
 #include "GameScene.h"
 #include "FbxLoader.h"
 #include "Object3d.h"
-//02_02P26
+//記録
+//
 using namespace DirectX;
 
 GameScene::GameScene()
@@ -65,7 +66,8 @@ void GameScene::Initialize(DirectXCommon* dxCommon, Input* input, Audio * audio)
 	camera->SetDistance(100.0f);
 
 	//モデル名を指定してファイル読み込み
-	model1=FbxLoader::GetInstance()->LoadModelFromFile("boneTest");
+	//model1=FbxLoader::GetInstance()->LoadModelFromFile("cube");
+	model1 = FbxLoader::GetInstance()->LoadModelFromFile("boneTest");
 
 	//デバイスをセット
 	Object3d::SetDevice(dxCommon->GetDevice());
