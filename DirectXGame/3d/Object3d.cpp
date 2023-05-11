@@ -196,7 +196,7 @@ void Object3d::Initialize()
 		IID_PPV_ARGS(&constBuffSkin));
 
 	//1ƒtƒŒ[ƒ€•ª‚ÌŠÔ‚ğ60FPS‚Åİ’è
-	frameTime.SetTime(0, 0, 0, 1, 0, FbxTime::EMode::eFrames100);
+	frameTime.SetTime(0, 0, 0, 1, 0, FbxTime::EMode::eFrames60);
 }
 
 void Object3d::Update()
