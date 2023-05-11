@@ -194,7 +194,13 @@ void Object3d::Initialize()
 		D3D12_RESOURCE_STATE_GENERIC_READ,
 		nullptr,
 		IID_PPV_ARGS(&constBuffSkin));
-
+	////定数バッファへデータ転送
+	//ConstBufferDataSkin* constMapSkin = nullptr;
+	//result = constBuffSkin->Map(0, nullptr, (void**)&constMapSkin);
+	//for (int i = 0; i < MAX_BONES; i++) {
+	//	constMapSkin->bones[i] = XMMatrixIdentity();
+	//}
+	//constBuffSkin->Unmap(0, nullptr);
 	//1フレーム分の時間を60FPSで設定
 	frameTime.SetTime(0, 0, 0, 1, 0, FbxTime::EMode::eFrames60);
 }
@@ -241,7 +247,7 @@ void Object3d::Update()
 	//定数バッファへデータ転送
 	ConstBufferDataSkin* constMapSkin = nullptr;
 	result = constBuffSkin->Map(0, nullptr, (void**)&constMapSkin);
-	for (int i = 0; i < bones.size(); i++){
+	for (int i = 0; i < bones.size(); i++) {
 		//今の姿勢行列
 		XMMATRIX matCurrentPose;
 		//今の姿勢行列を取得
@@ -258,11 +264,11 @@ void Object3d::Update()
 		//1フレーム進める
 		currentTime += frameTime;
 		//最後まで再生したら先頭に戻す
-		if (currentTime>endTime){
+		if (currentTime > endTime) {
 			currentTime = startTime;
 		}
 	}
-	
+
 }
 
 void Object3d::PlayAnimation()
@@ -304,7 +310,7 @@ void Object3d::Draw(ID3D12GraphicsCommandList* cmdList)
 
 	//モデル描画
 	model->Draw(cmdList);
-	
+
 }
 
 
