@@ -8,7 +8,7 @@ Model::Model()
 Model::~Model()
 {
 	//FBXƒV[ƒ“‚Ì‰ð•ú
-	//fbxScene->Destroy();
+	fbxScene->Destroy();
 
 }
 
