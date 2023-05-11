@@ -88,6 +88,7 @@ void GameScene::Update()
 	camera->Update();
 	particleMan->Update();
 	object1->Update();
+	object1->PlayAnimation();
 }
 
 void GameScene::Draw()

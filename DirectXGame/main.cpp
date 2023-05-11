@@ -50,11 +50,11 @@ int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR,int)
 	//FBXローダー初期化
 	FbxLoader::GetInstance()->Initialize(dxCommon->GetDevice());
 	
-
-
 	// ゲームシーンの初期化
 	gameScene = new GameScene();
 	gameScene->Initialize(dxCommon, input, audio);
+
+
 	
 	// メインループ
 	while (true)
@@ -74,9 +74,9 @@ int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR,int)
 		// 描画終了
 		dxCommon->PostDraw();
 	}
+	safe_delete(gameScene);
 	// 各種解放
 	FbxLoader::GetInstance()->Finalize();
-	safe_delete(gameScene);
 	safe_delete(audio);
 	safe_delete(dxCommon);
 
