@@ -9,7 +9,6 @@ Model::~Model()
 {
 	//FBXƒV[ƒ“‚Ì‰ð•ú
 	fbxScene->Destroy();
-
 }
 
 void Model::CreateBuffers(ID3D12Device* device)
