@@ -225,7 +225,7 @@ void Object3d::Update()
 	//定数バッファへデータ転送
 	ConstBufferDataTransform* constMap = nullptr;
 	result = constBuffTransform->Map(0, nullptr, (void**)&constMap);
-	if (SUCCEEDED(result)){
+	if (SUCCEEDED(result)) {
 		constMap->viewproj = matViewProjection;
 		constMap->world = modelTransform * matWorld;
 		constMap->cameraPos = cameraPos;
@@ -235,7 +235,7 @@ void Object3d::Update()
 	//ボーン配列
 	std::vector<Model::Bone>& bones = model->GetBones();
 
-	
+
 	//定数バッファへデータ転送
 	ConstBufferDataSkin* constMapSkin = nullptr;
 	result = constBuffSkin->Map(0, nullptr, (void**)&constMapSkin);
@@ -244,8 +244,7 @@ void Object3d::Update()
 		//今の姿勢行列
 		XMMATRIX matCurrentPose;
 		//今の姿勢行列を取得
-		FbxAMatrix fbxCurrentPose =
-			bones[i].fbxCluster->GetLink()->EvaluateGlobalTransform(0);
+		FbxAMatrix fbxCurrentPose = bones[i].fbxCluster->GetLink()->EvaluateGlobalTransform(0);
 		//XMMATRIXに変換
 		FbxLoader::ConvertMatrixFromFbx(&matCurrentPose, fbxCurrentPose);
 		//合成してスキニング行列に
@@ -257,7 +256,7 @@ void Object3d::Update()
 void Object3d::Draw(ID3D12GraphicsCommandList* cmdList)
 {
 	//モデルの割り当てがなければ描画しない
-	if (model==nullptr){
+	if (model == nullptr) {
 		return;
 	}
 	//パイプラインステートの設定
@@ -267,9 +266,9 @@ void Object3d::Draw(ID3D12GraphicsCommandList* cmdList)
 	//プリミティブ形状を設定
 	cmdList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	//定数バッファビューをセット
-	cmdList->SetGraphicsRootConstantBufferView(0,constBuffTransform->GetGPUVirtualAddress());
+	cmdList->SetGraphicsRootConstantBufferView(0, constBuffTransform->GetGPUVirtualAddress());
 	//定数バッファビューをセット
-	cmdList->SetGraphicsRootConstantBufferView(2, constBuffTransform->GetGPUVirtualAddress());
+	cmdList->SetGraphicsRootConstantBufferView(2, constBuffSkin->GetGPUVirtualAddress());
 
 	//モデル描画
 	model->Draw(cmdList);

@@ -65,16 +65,16 @@ void GameScene::Initialize(DirectXCommon* dxCommon, Input* input, Audio * audio)
 	camera->SetTarget({0, 20, 0});
 	camera->SetDistance(100.0f);
 
-	//モデル名を指定してファイル読み込み
-	//model1=FbxLoader::GetInstance()->LoadModelFromFile("cube");
-	model1 = FbxLoader::GetInstance()->LoadModelFromFile("boneTest");
-
 	//デバイスをセット
 	Object3d::SetDevice(dxCommon->GetDevice());
 	//カメラをセット
 	Object3d::SetCamera(camera);
 	//グラフィックスパイプライン生成
 	Object3d::CreateGraphicsPipeline();
+
+	//モデル名を指定してファイル読み込み
+	//model1=FbxLoader::GetInstance()->LoadModelFromFile("cube");
+	model1 = FbxLoader::GetInstance()->LoadModelFromFile("boneTest");
 
 	//3Dオブジェクト生成とモデルのセット
 	object1 = new Object3d;

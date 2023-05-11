@@ -1,9 +1,15 @@
 #include "Model.h"
 
+
+Model::Model()
+{
+}
+
 Model::~Model()
 {
 	//FBXƒV[ƒ“‚Ì‰ð•ú
-	fbxScene->Destroy();
+	//fbxScene->Destroy();
+
 }
 
 void Model::CreateBuffers(ID3D12Device* device)

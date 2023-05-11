@@ -1,6 +1,10 @@
 //ボーンの最大数
 static const int MAX_BONES = 32;
 
+cbuffer skinning:register(b3)//ボーンのスキニング行列が入る
+{
+	matrix matSkinning[MAX_BONES];
+};
 cbuffer cbuff0:register(b0)
 {
 	matrix viewproj;//ビュープロジェクション行列
@@ -8,10 +12,6 @@ cbuffer cbuff0:register(b0)
 	float3 cameraPos;//カメラ座標(ワールド座標)
 };
 
-cbuffer skinning:register(b3)//ボーンのスキニング行列が入る
-{
-	matrix matSkinning[MAX_BONES];
-};
 
 //パーティクスバッファの入力
 struct VSInput
