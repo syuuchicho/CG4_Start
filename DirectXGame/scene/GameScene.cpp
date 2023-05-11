@@ -4,7 +4,7 @@
 #include "GameScene.h"
 #include "FbxLoader.h"
 #include "Object3d.h"
-//02_02P26
+
 using namespace DirectX;
 
 GameScene::GameScene()

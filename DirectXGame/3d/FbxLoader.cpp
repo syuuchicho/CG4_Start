@@ -1,7 +1,7 @@
 ﻿#include "FbxLoader.h"
 #include <cassert>
 using namespace DirectX;
-//01_07 P24
+
 FbxLoader* FbxLoader::GetInstance()
 {
 	static FbxLoader instance;
