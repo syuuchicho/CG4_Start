@@ -268,7 +268,6 @@ void Object3d::Update()
 			currentTime = startTime;
 		}
 	}
-
 }
 
 void Object3d::PlayAnimation()
