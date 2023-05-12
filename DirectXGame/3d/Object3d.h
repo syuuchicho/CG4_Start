@@ -28,6 +28,8 @@ public://静的メンバー関数
 	//setter
 	static void SetDevice(ID3D12Device* device) { Object3d::device = device; }
 	static void SetCamera(Camera*camera) { Object3d::camera = camera; }
+	//自作
+	void SetRotation(XMFLOAT3 rotation) {this->rotation = {rotation.x,rotation.y,rotation.z };}
 	/// <summary>
 	/// グラフィックスパイプラインの生成
 	/// </summary>
