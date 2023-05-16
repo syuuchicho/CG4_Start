@@ -24,7 +24,7 @@ void PostEffect::Initialize()
 	Sprite::Initialize();
 	//テクスチャリソース設定
 	CD3DX12_RESOURCE_DESC texresDesc = CD3DX12_RESOURCE_DESC::Tex2D(
-		DXGI_FORMAT_B8G8R8X8_UNORM_SRGB,
+		DXGI_FORMAT_R8G8B8A8_UNORM_SRGB,
 		WinApp::window_width,
 		(UINT)WinApp::window_height,
 		1, 0, 1, 0, D3D12_RESOURCE_FLAG_ALLOW_RENDER_TARGET
@@ -33,7 +33,7 @@ void PostEffect::Initialize()
 	//テクスチャバッファの生成
 	result = device->CreateCommittedResource(
 		&CD3DX12_HEAP_PROPERTIES(D3D12_CPU_PAGE_PROPERTY_WRITE_BACK,
-			D3D12_MEMORY_POOL_L0),
+	D3D12_MEMORY_POOL_L0),
 		D3D12_HEAP_FLAG_NONE,
 		&texresDesc,
 		D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE,
@@ -67,7 +67,7 @@ void PostEffect::Initialize()
 	assert(SUCCEEDED(result));
 	//SRV設定
 	D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc{};//設定構造体
-	srvDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM_SRGB;
+	srvDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM_SRGB;
 	srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
 	srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;//2Dテクスチャ
 	srvDesc.Texture2D.MipLevels = 1;
