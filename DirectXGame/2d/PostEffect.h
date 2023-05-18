@@ -18,6 +18,10 @@ public:
     /// </summary>
     void Initialize();
     /// <summary>
+    /// パイプライン生成
+    /// </summary>
+    void CreateGraphicsPipelineState();
+    /// <summary>
     /// シーン描画前処理
     /// </summary>
     /// <param name="cmdList">コマンドリスト</param>
@@ -43,5 +47,9 @@ private:
     ComPtr<ID3D12DescriptorHeap> descHeapRTV;
     //DSV用デスクリプタヒープ
     ComPtr<ID3D12DescriptorHeap> descHeapDSV;
+    //グラフィックスパイプライン
+    ComPtr<ID3D12PipelineState>pipelineState;
+    //ルートシグネチャー
+    ComPtr<ID3D12RootSignature>rootSignature;
 };
 
