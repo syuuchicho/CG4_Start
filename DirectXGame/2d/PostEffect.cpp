@@ -4,7 +4,7 @@
 #include<d3dx12.h>
 #include<d3dcompiler.h>
 #pragma comment(lib,"d3dcompiler.lib")
-
+//03_07
 using namespace DirectX;
 //Ã“Iƒƒ“ƒo[•Ï”‚ÌÀ‘Ì
 //											Red Green Blue Alpha
