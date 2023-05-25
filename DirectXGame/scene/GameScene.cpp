@@ -69,8 +69,8 @@ void GameScene::Initialize(DirectXCommon* dxCommon, Input* input, Audio * audio)
 	Object3d::CreateGraphicsPipeline();
 
 	//モデル名を指定してファイル読み込み
-	//model1=FbxLoader::GetInstance()->LoadModelFromFile("cube");
-	model1 = FbxLoader::GetInstance()->LoadModelFromFile("boneTest");
+	model1=FbxLoader::GetInstance()->LoadModelFromFile("cube");
+	//model1 = FbxLoader::GetInstance()->LoadModelFromFile("boneTest");
 
 	//3Dオブジェクト生成とモデルのセット
 	object1 = new Object3d;
@@ -80,7 +80,7 @@ void GameScene::Initialize(DirectXCommon* dxCommon, Input* input, Audio * audio)
 
 	// カメラ注視点をセット
 	camera->SetTarget({0, 2.5f, 0});
-	camera->SetDistance(8.0f);
+	camera->SetDistance(100.0f);
 	object1->SetRotation({ 0,90,0 });
 }
 
