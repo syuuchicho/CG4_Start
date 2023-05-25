@@ -311,7 +311,4 @@ void Object3d::Draw(ID3D12GraphicsCommandList* cmdList)
 
 	//ƒ‚ƒfƒ‹•`‰æ
 	model->Draw(cmdList);
-
 }
-
-
