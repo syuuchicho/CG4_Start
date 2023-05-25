@@ -11,12 +11,12 @@ float4 main(VSOutput input) : SV_TARGET
 
 	//uvのvを0.1で割って余りが0.05未満ならcolortex1
 	//そうでなければcolortex0を採用
-	float4 color = (1-colortex0.rgb,1);
+	float4 color = colortex0;
 	if (fmod(input.uv.y,0.1f)<0.05f){
 		color = colortex1;
 	}
 
-	return float4(1-color.rgb, 1);
+	return float4(color.rgb,1);
 
 	//通常
 	//float4 texcolor = tex.Sample(smp,input.uv);
