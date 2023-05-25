@@ -149,10 +149,10 @@ void PostEffect::Initialize()
 	assert(SUCCEEDED(result));
 	//RTVの作成
 	//レンダーターゲットビューの設定
-	D3D12_RENDER_TARGET_VIEW_DESC renderTargeViewDesc{};
+	D3D12_RENDER_TARGET_VIEW_DESC renderTargetViewDesc{};
 	//シェーダーの計算結果をSRGBに変換して書き込む
-	renderTargeViewDesc.Format - DXGI_FORMAT_R8G8B8A8_UNORM_SRGB;
-	renderTargeViewDesc.ViewDimension = D3D12_RTV_DIMENSION_TEXTURE2D;
+	renderTargetViewDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM_SRGB;
+	renderTargetViewDesc.ViewDimension = D3D12_RTV_DIMENSION_TEXTURE2D;
 	for (int i = 0; i < 2; i++)
 	{
 		//デスクリプタヒープの作成
